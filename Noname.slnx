@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="docker-compose.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Noname.API/Noname.API.csproj" />
+    <Project Path="src/Noname.Application/Noname.Application.csproj" />
+    <Project Path="src/Noname.Domain/Noname.Domain.csproj" />
+    <Project Path="src/Noname.Infrastructure/Noname.Infrastructure.csproj" />
+    <Project Path="src/Noname.Shared/Noname.Shared.csproj" />
+  </Folder>
+</Solution>
