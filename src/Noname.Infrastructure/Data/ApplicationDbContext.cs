@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Noname.Application.Common.Interfaces;
+using Noname.Domain.Common;
 using Noname.Domain.Entities;
+using Noname.Infrastructure.Data.Configurations;
 using Noname.Infrastructure.Identity;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Reflection.Emit;
 
 namespace Noname.Infrastructure.Data
 {
@@ -20,6 +24,11 @@ namespace Noname.Infrastructure.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            //.IgnoreQueryFilters() kullanarak bu filtreleri geçersiz kılabilirsiniz.
+            //Bu, belirli bir sorguda silinmiş öğeleri dahil etmek istediğiniz durumlarda yararlı olabilir.
+            builder.AddSoftDeleteFilter();
         }
     }
 }
+
