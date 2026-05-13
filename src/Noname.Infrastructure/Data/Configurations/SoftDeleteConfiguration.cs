@@ -24,6 +24,20 @@ public static class SoftDeleteConfiguration
         }
     }
 
+    public static void AddGlobalIsDeletedIndexes(this ModelBuilder builder)
+    {
+        foreach (var entityType in builder.Model.GetEntityTypes())
+        {
+            if (typeof(ISoftDelete).IsAssignableFrom(entityType.ClrType))
+            {
+                builder.Entity(entityType.ClrType)
+                    .HasIndex(nameof(ISoftDelete.IsDeleted))
+                    .HasFilter("\"IsDeleted\" = false")
+                    .HasDatabaseName($"IX_{entityType.ClrType.Name}_SoftDelete_Active");
+            }
+        }
+    }
+
     private static LambdaExpression GenerateSoftDeleteExpression(Type type)
     {
         var parameter = Expression.Parameter(type, "m");

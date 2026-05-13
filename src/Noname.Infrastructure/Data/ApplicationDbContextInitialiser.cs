@@ -43,6 +43,11 @@ public class ApplicationDbContextInitialiser
     {
         try
         {
+            //DİKKAT! ÖNEMLİ! ERROR! EYVAH! İMDAAATTT!
+            //EnsureDeletedAsync ve EnsureCreatedAsync metotları, veritabanını sıfırlamak ve yeniden oluşturmak
+            //için kullanılır. Bu işlemler, mevcut verilerin kaybolmasına neden olabilir.
+            //Bu nedenle, bu metotları üretim ortamlarında kullanmaktan kaçınmalısınız. Sadece geliştirme veya
+            //test ortamlarında kullanmanız önerilir.
             await _context.Database.EnsureDeletedAsync();
             await _context.Database.EnsureCreatedAsync();
         }

@@ -28,6 +28,10 @@ namespace Noname.Infrastructure.Data
             //.IgnoreQueryFilters() kullanarak bu filtreleri geçersiz kılabilirsiniz.
             //Bu, belirli bir sorguda silinmiş öğeleri dahil etmek istediğiniz durumlarda yararlı olabilir.
             builder.AddSoftDeleteFilter();
+
+            //IsDeleted sütununa global bir indeks ekleyerek, silinmiş olmayan kayıtların sorgulanmasını
+            //hızlandırabilirsiniz. Bu, özellikle büyük veri kümeleriyle çalışırken performansı artırabilir.
+            builder.AddGlobalIsDeletedIndexes();
         }
     }
 }

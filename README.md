@@ -38,12 +38,7 @@ git clone [https://github.com/SXTP/CleanArchitectureTemplate.git]
 docker-compose up -d
 ```
 
-3. Veritabanı tablolarını oluşturun (Migration):
-```bash
-dotnet ef database update --project Noname.Infrastructure --startup-project Noname.API
-```
-
-4. Uygulamayı başlatın:
+3. Uygulamayı başlatın:
 ```bash
 dotnet run --project Noname.API
 ```
